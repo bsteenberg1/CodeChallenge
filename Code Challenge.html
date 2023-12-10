@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>City of Cape Town - Data Science Unit Code Challenge</title>
+  
+    
+    
+     <!-- Charts.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Papaparse To Process CSV-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- MarkerClusterGroup CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+    <!-- Main JS -->
+    <script type="text/javascript" src="http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/SiteAssets/_js/CodeChallenge.js"></script>
+    
+    <link rel="stylesheet" href="http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/SiteAssets/_js/bootstrap.css" />
+
+
+   <style>
+   
+   
+          body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+    .banner {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .banner img {
+            width: 100px; /* Adjust the width of the image */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Adjust the margin as needed */
+        }
+   
+   
+    .chart-container {
+    	display: flex;
+         text-align: center;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #chart1,
+    #chart2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    #map {
+        height: 500px;
+        display: none;
+    }
+
+    .active {
+        border: 2px solid black;
+    }
+
+    #DropdownContainer,
+    #ChartContainer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .button-container {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .btn {
+        margin: 5px;
+    }
+
+    .Dropdown-container {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    select {
+        margin: 5px;
+    }
+</style>
+
+</head>
+
+<body>
+
+ <div class="banner">
+        <img src="http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/SiteAssets/_js/city_emblem.png" alt="Banner Image">
+        <h1>City of Cape Town - Data Science Unit Code Challenge</h1>
+    </div>
+
+<div class="button-container">
+    <button class="btn btn-info" id="ChartSection">Charts</button>
+    <button class="btn btn-info" id="buttonMap">Map Viewer</button>
+</div>
+
+
+<div class="Dropdown-container" id="DropdownContainer">
+<select id="dropdownlistSuburb"></select>
+<select id="dropdownlistCode"></select>
+</div>
+
+
+
+
+  <div class="chart-container" id="ChartContainer">
+        
+     <table style="width:100%">
+        <tr>
+            <td>
+                <canvas id="recordsChart"></canvas>
+                <div id="chart1"></div>
+            </td>
+            <td>
+                <div id="chart2">
+                    <canvas id="recordcodesChart"></canvas>
+                </div>            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+            <td></td>
+        </tr>
+    </table>        
+        
+        
+        
+        
+    </div>			    
+			    
+<div id="map" ></div>
+
+</body>
+
+</html>
