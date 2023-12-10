@@ -149,7 +149,7 @@
             map.setMinZoom(7);
 
             var mountainIcon = L.icon({
-                iconUrl: 'http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/SiteAssets/TableMountain.png',
+                iconUrl: 'images/table-mountain.png',
                 iconSize: [32, 32],
                 iconAnchor: [16, 32],
                 popupAnchor: [0, -32]
@@ -167,25 +167,13 @@
             });
         }
 
-        function ToJson() {
-            const jsonUrl = 'http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/Documents/city-hex-polygons-8.geojson';
-            console.log("hereJason");
-            fetch(jsonUrl)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching JSON:', error);
-                });
-        }
-
+    
         function ToCsv() {
             if (coordinatesArray !== null) {
                 return Promise.resolve(coordinatesArray);
             }
 
-            const csvUrl = 'http://ctappsdev.capetown.gov.za/sites/InfoPathDataConnections/Documents/sr_hex_filteredTopTen_file.csv';
+           const csvUrl = 'extracts/sr_hex_filteredTopTen_file.csv';
 
             console.log("Before fetch");
 
