@@ -351,45 +351,30 @@ function ProcessChart(array) {
 function CreateCodesChart(CodesArray) {
     const ctx2 = document.getElementById('recordcodesChart').getContext('2d');
 
+    // Sort the data in descending order
+    const sortedData = Object.entries(CodesArray).sort((a, b) => b[1] - a[1]);
+
+    // Extract sorted labels and values
+    const sortedLabels = sortedData.map(entry => entry[0]);
+    const sortedValues = sortedData.map(entry => entry[1]);
+
     recordcodesChart = new Chart(ctx2, {
         type: 'pie',
         data: {
-            labels: Object.keys(CodesArray),
+            labels: sortedLabels,
             datasets: [{
                 label: 'Code Groups',
-                data: Object.values(CodesArray),
-                backgroundColor: [
-                    '#66FF00',
-                    '#FFD700',
-                    '#FF6347',
-                    '#87CEEB',
-                    '#FF69B4',
-                    '#9400D3',
-                    '#4FFFB0',
-                    '#8A9A5B',
-                    '#FF00FF',
-                    '#E6E6FA',
-                ],
-                borderColor: [
-                    '#66FF00',
-                    '#FFD700',
-                    '#FF6347',
-                    '#87CEEB',
-                    '#FF69B4',
-                    '#9400D3',
-                    '#4FFFB0',
-                    '#8A9A5B',
-                    '#FF00FF',
-                    '#E6E6FA',
-                ],
-                borderWidth: 0, // Set to 0 to remove grid lines
+                data: sortedValues,
+                backgroundColor: sortedValues.map((value, index) => getColorByPosition(index + 1)),
+                borderColor: sortedValues.map((value, index) => getColorByPosition(index + 1)),
+                borderWidth: 0,
             }]
         },
         options: {
             plugins: {
                 legend: {
                     display: true,
-                    position: 'bottom', // Set the legend position to bottom
+                    position: 'bottom',
                     labels: {
                         font: {
                             size: 10,
@@ -413,12 +398,30 @@ function CreateCodesChart(CodesArray) {
         }
     });
 }
-		//deletes chart so the data is able to be refreshed 
-        function disposeChart() {
-            if (recordcodesChart && typeof recordcodesChart.destroy === 'function') {
-                recordcodesChart.destroy();
-                recordcodesChart = null;
-            }
-        }
+
+// Function to get color based on position
+function getColorByPosition(position) {
+    const colors = [
+        'rgba(255, 0, 0, 0.7)',
+        'rgba(255, 165, 0, 0.7)',
+        'rgba(255, 255, 0, 0.7)',
+        'rgba(0, 128, 0, 0.7)',
+        'rgba(0, 0, 255, 0.7)',
+        'rgba(128, 0, 128, 0.7)',
+        'rgba(255, 20, 147, 0.7)',
+        'rgba(0, 206, 209, 0.7)',
+        'rgba(255, 215, 0, 0.7)',
+        'rgba(220, 220, 220, 0.7)'
+    ];
+    return colors[position - 1] || 'rgba(135, 206, 235, 0.7)'; // Default color if position exceeds the available colors
+}
+
+//deletes chart so the data is able to be refreshed 
+function disposeChart() {
+ if (recordcodesChart && typeof recordcodesChart.destroy === 'function') {
+	 recordcodesChart.destroy();
+         recordcodesChart = null;
+ }
+}
  
 });
