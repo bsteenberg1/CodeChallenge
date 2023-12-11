@@ -280,7 +280,7 @@ function ProcessChart(array) {
             plugins: {
                 title: {
                     display: true,
-                    text: "Service Requests Overview (Click on Bars for Details)",
+                    text: "SR Overview (Click bars to see code breakdown)",
                     font: {
                         size: 25,
                         weight: 'bold'
