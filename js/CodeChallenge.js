@@ -251,18 +251,19 @@ function ProcessChart(array) {
 
     const ctx2 = document.getElementById('recordsChart').getContext('2d');
     let chart;
-    const fixedColors = [
-        '#AA0000',
-        '#D2122E',
-        '#E23D28',
-        '#FF0800',
-        '#FF4500',
-        '#fd5c63',
-        '#FEBE10',
-        '#FFC72C',
-        '#F0E68C',
-        '#FFFF00'
+    var fixedColors = [
+    'rgba(170, 0, 0, 0.5)',
+    'rgba(210, 18, 46, 0.5)',
+    'rgba(226, 61, 40, 0.5)',
+    'rgba(255, 8, 0, 0.5)',
+    'rgba(255, 69, 0, 0.5)',
+    'rgba(253, 92, 99, 0.5)',
+    'rgba(254, 190, 16, 0.5)',
+    'rgba(255, 199, 44, 0.5)',
+    'rgba(240, 230, 140, 0.5)',
+    'rgba(255, 255, 0, 0.5)'
     ];
+
 
     chart = new Chart(ctx2, {
         type: 'bar',
